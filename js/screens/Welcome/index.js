@@ -69,13 +69,13 @@ export default class Welcome extends React.Component {
           _smallAnimation(this.state.textLetterRotaion, 45, 200),
           _smallAnimation(this.state.instructionOpacity, 0, 500),
           Animated.sequence([
-            _smallAnimation(this.state.mainViewX, 3, 10),
+            _smallAnimation(this.state.mainViewX, 10, 10),
             _smallAnimation(this.state.mainViewX, 0, 10),
-            _smallAnimation(this.state.mainViewX, -3, 10),
+            _smallAnimation(this.state.mainViewX, -10, 10),
             _smallAnimation(this.state.mainViewX, 0, 10),
-            _smallAnimation(this.state.mainViewY, 3, 10),
+            _smallAnimation(this.state.mainViewY, 10, 10),
             _smallAnimation(this.state.mainViewY, 0, 10),
-            _smallAnimation(this.state.mainViewY, -3, 10),
+            _smallAnimation(this.state.mainViewY, -10, 10),
             _smallAnimation(this.state.mainViewY, 0, 10)
           ])
         ]).start(() => {
@@ -107,13 +107,13 @@ export default class Welcome extends React.Component {
           _smallAnimation(this.state.textLetter7Y, 80, 350),
           _smallAnimation(this.state.instructionOpacity, 0, 500),
           Animated.sequence([
-            _smallAnimation(this.state.mainViewX, 3, 10),
+            _smallAnimation(this.state.mainViewX, 10, 10),
             _smallAnimation(this.state.mainViewX, 0, 10),
-            _smallAnimation(this.state.mainViewX, -3, 10),
+            _smallAnimation(this.state.mainViewX, -10, 10),
             _smallAnimation(this.state.mainViewX, 0, 10),
-            _smallAnimation(this.state.mainViewY, 3, 10),
+            _smallAnimation(this.state.mainViewY, 10, 10),
             _smallAnimation(this.state.mainViewY, 0, 10),
-            _smallAnimation(this.state.mainViewY, -3, 10),
+            _smallAnimation(this.state.mainViewY, -10, 10),
             _smallAnimation(this.state.mainViewY, 0, 10)
           ])
         ]).start(() => {
