@@ -20,7 +20,9 @@ OR
 # Type the Address
 
 Typing 
+
 >exp://exp.host/@shubham56/awesomeanimation
+
 inside of Expo will also open this experience.
 
 # Need Expo?
