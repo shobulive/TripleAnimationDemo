@@ -7,17 +7,21 @@ It is bootstrapped with [Create React Native App](https://github.com/react-commu
 
 ![Preview](screenshot/AnimationPreview.gif)
 
-##Preivew on Expo
+## Preivew on Expo
 
-#Scan with Expo
+# Scan with Expo
 
 Scanning this QR code with your Expo mobile app loads this experience immediately.
+
 ![ExpoLink](screenshot/download.png)
+
 OR
-#Type the Address
+
+# Type the Address
 
 Typing exp://exp.host/@shubham56/awesomeanimation inside of Expo will also open this experience.
-#Need Expo?
+
+# Need Expo?
 
 With Expo you can build, share and enjoy many mobile experiences. Download the app to try AwesomeAnimation today.
 For links to install the Expo app, please visit https://expo.io.
