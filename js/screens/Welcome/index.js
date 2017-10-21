@@ -1,5 +1,12 @@
 import React from "react";
-import { Image, StatusBar, Text, Animated, Dimensions } from "react-native";
+import {
+  Image,
+  StatusBar,
+  Text,
+  Animated,
+  Dimensions,
+  Vibration
+} from "react-native";
 import { Container, Content, View } from "native-base";
 import _smallAnimation from "../../animations/smallAnimation";
 let { width, height } = Dimensions.get("window");
@@ -57,6 +64,7 @@ export default class Welcome extends React.Component {
     this.setState({ disabled: true });
     switch (this.state.count) {
       case 1:
+        Vibration.vibrate(1000);
         Animated.parallel([
           _smallAnimation(this.state.textLetterRotaion, 45, 200),
           _smallAnimation(this.state.instructionOpacity, 0, 500),
@@ -81,6 +89,7 @@ export default class Welcome extends React.Component {
         break;
       case 2:
         this._roationAnimation();
+        Vibration.vibrate(1000);
         Animated.parallel([
           _smallAnimation(this.state.textLetter1X, -width, 500),
           _smallAnimation(this.state.textLetter1Y, 70, 400),
