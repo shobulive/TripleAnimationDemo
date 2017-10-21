@@ -19,7 +19,9 @@ OR
 
 # Type the Address
 
-Typing exp://exp.host/@shubham56/awesomeanimation inside of Expo will also open this experience.
+Typing 
+>exp://exp.host/@shubham56/awesomeanimation
+inside of Expo will also open this experience.
 
 # Need Expo?
 
@@ -65,6 +67,9 @@ Run the following command
 ## Credits
 
 [NativeBase](https://nativebase.io/)
+
 [ReactNative](https://facebook.github.io/react-native/)
+
 [Expo](https://expo.io)
+
 [ReactNavigation](https://reactnavigation.org/)
