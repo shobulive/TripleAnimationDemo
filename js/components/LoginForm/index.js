@@ -18,7 +18,12 @@ export default class LoginForm extends React.Component {
     return (
       <Content>
         <View
-          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+          style={{
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: "10%"
+          }}
         >
           <Form>
             <Item
