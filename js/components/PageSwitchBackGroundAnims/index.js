@@ -132,103 +132,98 @@ export default class Main extends React.Component {
       outputRange: ["rgba(255,0,0,0.5)", "rgba(125, 24, 242, 0.5)"]
     });
 
-    try {
-      return (
-        <Container
+    return (
+      <Container
+        style={{
+          alignItems: "center"
+        }}
+      >
+        <StatusBar barStyle="light-content" />
+        <ImageBackground
+          source={this.props.backgroundImage}
+          style={{ position: "absolute", width: width, height: height }}
+          resizeMethod="auto"
+          resizeMode="cover"
+        />
+        <Decorators
+          show2ndPage={this.state.show2ndPage}
+          dimensionsLg={this.state.dimensionsLg}
+          dimensionsSm={this.state.dimensionsSm}
+          opacityDecor={this.state.opacityDecor}
+          decorStateVal={this.decor}
+          lgDecorColor={this.lgDecorColor}
+          smDecorColor="#ccc"
+        />
+        <Content>
+          <View
+            style={{
+              flex: 1,
+              alignContent: "center",
+              alignItems: "center",
+              justifyContent: "center",
+              height: height,
+              width: width
+            }}
+          >
+            <Animated.Image
+              source={this.props.logo}
+              style={[
+                {
+                  width: this.state.logoWidth,
+                  height: this.state.logoHeight,
+                  transform: [{ translateY: this.state.logoTranslateY }]
+                },
+                this.props.logoStyle
+              ]}
+              resizeMethod="auto"
+              resizeMode="contain"
+            />
+            <Animated.View
+              style={{
+                flex: 1,
+                height: this.state.heightMainView,
+                width: this.state.widthMainView,
+                opacity: this.state.opacityMainView,
+                padding: "5%"
+              }}
+            >
+              {this.state.show2ndPage ? this.props.page2 : this.props.page1}
+            </Animated.View>
+          </View>
+        </Content>
+        <Animated.View
           style={{
-            alignItems: "center"
+            width: width,
+            height: this.state.buttonHeight,
+            marginBottom: "-2%"
           }}
         >
-          <StatusBar barStyle="light-content" />
-          <ImageBackground
-            source={this.props.backgroundImage}
-            style={{ position: "absolute", width: width, height: height }}
-            resizeMethod="auto"
-            resizeMode="cover"
-          />
-          <Decorators
-            show2ndPage={this.state.show2ndPage}
+          <PageSwitchButton
+            buttonColor={buttonColor}
+            setDisabledTrue={() => this.setState({ buttonDisabled: true })}
+            setDisabledFalseAndRegToogle={() => {
+              this.setState({
+                buttonDisabled: false,
+                show2ndPage: !this.state.show2ndPage
+              });
+            }}
+            page2Text={page2SwitchText}
+            page1Text={page1SwitchText}
+            extraStyles={{ backgroundColor: buttonColor }}
+            buttonDisabled={this.state.buttonDisabled}
+            buttonHeight={this.state.buttonHeight}
+            widthMainView={this.state.widthMainView}
+            heightMainView={this.state.heightMainView}
+            opacityMainView={this.state.opacityMainView}
             dimensionsLg={this.state.dimensionsLg}
             dimensionsSm={this.state.dimensionsSm}
             opacityDecor={this.state.opacityDecor}
-            decorStateVal={this.decor}
-            lgDecorColor={this.lgDecorColor}
-            smDecorColor="#ccc"
+            show2ndPage={this.state.show2ndPage}
+            page1TextStateVal={this.page1TextStateVal}
+            page2TextStateVal={this.page2TextStateVal}
           />
-          <Content>
-            <View
-              style={{
-                flex: 1,
-                alignContent: "center",
-                alignItems: "center",
-                justifyContent: "center",
-                height: height,
-                width: width
-              }}
-            >
-              <Animated.Image
-                source={this.props.logo}
-                style={[
-                  {
-                    width: this.state.logoWidth,
-                    height: this.state.logoHeight,
-                    transform: [{ translateY: this.state.logoTranslateY }]
-                  },
-                  this.props.logoStyle
-                ]}
-                resizeMethod="auto"
-                resizeMode="contain"
-              />
-              <Animated.View
-                style={{
-                  flex: 1,
-                  height: this.state.heightMainView,
-                  width: this.state.widthMainView,
-                  opacity: this.state.opacityMainView,
-                  padding: "5%"
-                }}
-              >
-                {this.state.show2ndPage ? this.props.page2 : this.props.page1}
-              </Animated.View>
-            </View>
-          </Content>
-          <Animated.View
-            style={{
-              width: width,
-              height: this.state.buttonHeight,
-              marginBottom: "-2%"
-            }}
-          >
-            <PageSwitchButton
-              buttonColor={buttonColor}
-              setDisabledTrue={() => this.setState({ buttonDisabled: true })}
-              setDisabledFalseAndRegToogle={() => {
-                this.setState({
-                  buttonDisabled: false,
-                  show2ndPage: !this.state.show2ndPage
-                });
-              }}
-              page2Text={page2SwitchText}
-              page1Text={page1SwitchText}
-              extraStyles={{ backgroundColor: buttonColor }}
-              buttonDisabled={this.state.buttonDisabled}
-              buttonHeight={this.state.buttonHeight}
-              widthMainView={this.state.widthMainView}
-              heightMainView={this.state.heightMainView}
-              opacityMainView={this.state.opacityMainView}
-              dimensionsLg={this.state.dimensionsLg}
-              dimensionsSm={this.state.dimensionsSm}
-              opacityDecor={this.state.opacityDecor}
-              show2ndPage={this.state.show2ndPage}
-              page1TextStateVal={this.page1TextStateVal}
-              page2TextStateVal={this.page2TextStateVal}
-            />
-          </Animated.View>
-        </Container>
-      );
-    } catch (err) {
-      console.log(err);
-      return <Container />;
-    }
+        </Animated.View>
+      </Container>
+    );
   }
 }

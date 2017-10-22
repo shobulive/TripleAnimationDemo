@@ -5,10 +5,6 @@ export default class LoginForm extends React.Component {
   state = {
     submitted: false
   };
-  constructor(props) {
-    super(props);
-    console.log(this.props);
-  }
   render() {
     return (
       <View
