@@ -4,7 +4,8 @@ import { Button } from "native-base";
 import _smallComponentAnimation from "../../animations/smallAnimation";
 import _suckUpAnimation from "../../animations/suckUpAnimation";
 import _spitOutAnimation from "../../animations/spitOutAnimation";
-import TextX from "../PageSwitchButtonText";
+import TextX from "../AnimatedTextGenerator";
+import _switchPageAnimation from "../../animations/switchPageAnimation";
 let { width } = Dimensions.get("window");
 export default class PageSwitchButton extends React.Component {
   render() {
@@ -26,42 +27,19 @@ export default class PageSwitchButton extends React.Component {
             height: 70,
             borderTopRightRadius: 50
           }}
-          disabled={this.props.buttonDiabled}
+          disabled={this.props.buttonDisabled}
           onPress={() => {
-            this.props.setDisabledTrue();
-            _smallComponentAnimation(
+            _switchPageAnimation(
+              this.props.setDisabledTrue,
+              this.props.widthMainView,
+              this.props.heightMainView,
+              this.props.opacityMainView,
+              this.props.dimensionsLg,
+              this.props.dimensionsSm,
+              this.props.opacityDecor,
               this.props.buttonHeight,
-              70,
-              400
-            ).start(() => {
-              _suckUpAnimation(
-                this.props.widthMainView,
-                this.props.heightMainView,
-                this.props.opacityMainView,
-                this.props.widthLg,
-                this.props.heightLg,
-                this.props.widthSm,
-                this.props.heightSm,
-                this.props.opacityDecor
-              ).start(() => {
-                _smallComponentAnimation(
-                  this.props.buttonHeight,
-                  50,
-                  400
-                ).start();
-                this.props.setDisabledFalseAndRegToogle();
-                _spitOutAnimation(
-                  this.props.widthMainView,
-                  this.props.heightMainView,
-                  this.props.opacityMainView,
-                  this.props.widthLg,
-                  this.props.heightLg,
-                  this.props.widthSm,
-                  this.props.heightSm,
-                  this.props.opacityDecor
-                ).start();
-              });
-            });
+              this.props.setDisabledFalseAndRegToogle
+            );
           }}
         >
           <Text
@@ -70,30 +48,17 @@ export default class PageSwitchButton extends React.Component {
               marginTop: "-4%"
             }}
           >
-            {this.props.showRegistrationPage ? (
+            {this.props.show2ndPage ? (
               <TextX
-                position={[
-                  this.props.positionL,
-                  this.props.positionO,
-                  this.props.positionG,
-                  this.props.positionI,
-                  this.props.positionN
-                ]}
-                text="Login"
+                position={this.props.page1TextStateVal}
+                rotation={[]}
+                text={this.props.page1Text}
               />
             ) : (
               <TextX
-                position={[
-                  this.props.positionR,
-                  this.props.positionE,
-                  this.props.positionRG,
-                  this.props.positionRI,
-                  this.props.positionS,
-                  this.props.positionT,
-                  this.props.positionRE,
-                  this.props.positionRR
-                ]}
-                text="Register"
+                position={this.props.page2TextStateVal}
+                rotation={[]}
+                text={this.props.page2Text}
               />
             )}
           </Text>

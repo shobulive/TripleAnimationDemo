@@ -1,27 +1,69 @@
 import { Animated } from "react-native";
-import _registerTextAnimation from "./registerTextAnimation";
-import _loginTextAnimation from "./loginTextAnimation";
+import _smallAnimation from "./smallAnimation";
+function _textTransitionAnimation(textStateVal, destination, finalCallback) {
+  _smallAnimation(textStateVal[0], destination, 80).start(() => {
+    if (textStateVal.length > 1)
+      _smallAnimation(textStateVal[1], destination, 80).start(() => {
+        if (textStateVal.length > 2)
+          _smallAnimation(textStateVal[2], destination, 80).start(() => {
+            if (textStateVal.length > 3)
+              _smallAnimation(textStateVal[3], destination, 80).start(() => {
+                if (textStateVal.length > 4)
+                  _smallAnimation(
+                    textStateVal[4],
+                    destination,
+                    80
+                  ).start(() => {
+                    if (textStateVal.length > 5)
+                      _smallAnimation(
+                        textStateVal[5],
+                        destination,
+                        80
+                      ).start(() => {
+                        if (textStateVal.length > 6)
+                          _smallAnimation(
+                            textStateVal[6],
+                            destination,
+                            80
+                          ).start(() => {
+                            if (textStateVal.length > 7)
+                              _smallAnimation(
+                                textStateVal[7],
+                                destination,
+                                80
+                              ).start(() => {
+                                if (textStateVal.length > 8)
+                                  _smallAnimation(
+                                    textStateVal[8],
+                                    destination,
+                                    80
+                                  ).start(() => {
+                                    if (textStateVal.length > 9)
+                                      _smallAnimation(
+                                        textStateVal[9],
+                                        destination,
+                                        80
+                                      ).start(finalCallback);
+                                  });
+                              });
+                          });
+                      });
+                  });
+              });
+          });
+      });
+  });
+}
 export default function _switchButtonAnimation(
-  showRegistrationPage,
+  show2ndPage,
   switchColor,
-  positionL,
-  positionO,
-  positionG,
-  positionI,
-  positionN,
-  positionR,
-  positionE,
-  positionRG,
-  positionRI,
-  positionS,
-  positionT,
-  positionRE,
-  positionRR,
+  page1TextStateVal,
+  page2TextStateVal,
   logoHeight,
   logoTranslateY,
   logoWidth
 ) {
-  if (showRegistrationPage) {
+  if (show2ndPage) {
     Animated.timing(switchColor, {
       toValue: 150,
       duration: 400
@@ -41,49 +83,11 @@ export default function _switchButtonAnimation(
         duration: 700
       })
     ]).start();
-    _loginTextAnimation(
-      positionL,
+    _textTransitionAnimation(
+      page1TextStateVal,
       0,
-      80,
-      positionO,
-      0,
-      80,
-      positionG,
-      0,
-      80,
-      positionI,
-      0,
-      80,
-      positionN,
-      0,
-      80
-    ).start();
-    _registerTextAnimation(
-      positionR,
-      100,
-      80,
-      positionE,
-      100,
-      80,
-      positionRG,
-      100,
-      80,
-      positionRI,
-      100,
-      80,
-      positionS,
-      100,
-      80,
-      positionT,
-      100,
-      80,
-      positionRE,
-      100,
-      80,
-      positionRR,
-      100,
-      80
-    ).start();
+      _textTransitionAnimation(page2TextStateVal, 100, () => {})
+    );
   } else {
     Animated.timing(switchColor, {
       toValue: 0,
@@ -104,48 +108,10 @@ export default function _switchButtonAnimation(
         duration: 700
       })
     ]).start();
-    _loginTextAnimation(
-      positionL,
+    _textTransitionAnimation(
+      page1TextStateVal,
       100,
-      80,
-      positionO,
-      100,
-      80,
-      positionG,
-      100,
-      80,
-      positionI,
-      100,
-      80,
-      positionN,
-      100,
-      80
-    ).start();
-    _registerTextAnimation(
-      positionR,
-      0,
-      80,
-      positionE,
-      0,
-      80,
-      positionRG,
-      0,
-      80,
-      positionRI,
-      0,
-      80,
-      positionS,
-      0,
-      80,
-      positionT,
-      0,
-      80,
-      positionRE,
-      0,
-      80,
-      positionRR,
-      0,
-      80
-    ).start();
+      _textTransitionAnimation(page2TextStateVal, 0, () => {})
+    );
   }
 }

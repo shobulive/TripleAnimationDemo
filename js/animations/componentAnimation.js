@@ -1,5 +1,5 @@
 import { Animated } from "react-native";
-import _smallComponentAnimation from "./smallAnimation";
+import _smallAnimation from "./smallAnimation";
 export default function _componentAnimation(
   stateVal,
   to,
@@ -8,7 +8,7 @@ export default function _componentAnimation(
   durationReturn
 ) {
   return Animated.sequence([
-    _smallComponentAnimation(stateVal, to, durationGo),
-    _smallComponentAnimation(stateVal, from, durationReturn)
+    _smallAnimation(stateVal, to, durationGo),
+    _smallAnimation(stateVal, from, durationReturn)
   ]);
 }
