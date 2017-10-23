@@ -9,7 +9,6 @@ export default function _mirrorShatterAnimation(
   callBackFunction,
   mainViewX,
   mainViewY,
-  logoOpacity,
   instructionOpacity,
   textLetterRotation
 ) {
@@ -26,7 +25,6 @@ export default function _mirrorShatterAnimation(
   }
   smallAnimationCollection.push(_screenShakeAnimation(mainViewX, mainViewY));
   Animated.parallel(smallAnimationCollection).start(() => {
-    _smallAnimation(logoOpacity, 1, 500).start();
     callBackFunction();
     _smallAnimation(instructionOpacity, 1, 500).start();
   });

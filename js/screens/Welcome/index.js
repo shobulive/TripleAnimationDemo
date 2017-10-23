@@ -8,40 +8,34 @@ import _mirrorBreakAnimation from "../../animations/mirrorBreakAnimation";
 import _mirrorShatterAnimation from "../../animations/mirrorShatterAnimation";
 import _dramaticAppearanceAnimation from "../../animations/dramaticApperanceAnimation";
 import _upDownRepeatAnimation from "../../animations/upDownRepeatAnimations";
+import FragmentedImage from "../../components/FragmentedImage";
 let { width, height } = Dimensions.get("window");
 export default class Welcome extends React.Component {
   constructor(props) {
     super(props);
-    for (let i = 1; i <= 7; i++) {
-      let x = "textLetter" + i + "X";
-      let y = "textLetter" + i + "Y";
+    this.position = [];
+    for (let i = 1; i <= 32; i++) {
+      let x = "imageFragment" + i + "X";
+      let y = "imageFragment" + i + "Y";
       this.state[x] = new Animated.Value(0);
       this.state[y] = new Animated.Value(0);
-    }
-    this.position = [];
-    for (let i = 1; i <= 7; i++) {
-      let x = "textLetter" + i + "X";
-      let y = "textLetter" + i + "Y";
       this.position.push({ X: this.state[x], Y: this.state[y] });
     }
-    this.mirrorShatterDestination = [
-      { X: -width, Y: 70 },
-      { X: -100, Y: height },
-      { X: 50, Y: height },
-      { X: 25, Y: height },
-      { X: -20, Y: height },
-      { X: 100, Y: height },
-      { X: width, Y: 80 }
-    ];
-    this.mirrorShatterDuration = [
-      { X: 500, Y: 400 },
-      { X: 400, Y: 700 },
-      { X: 300, Y: 600 },
-      { X: 100, Y: 500 },
-      { X: 150, Y: 550 },
-      { X: 400, Y: 600 },
-      { X: 500, Y: 350 }
-    ];
+    this.mirrorShatterDestination = [];
+    for (let i = 1; i <= 32; i++) {
+      let temp = Math.random() * (1 + 1) - 1;
+      this.mirrorShatterDestination.push({
+        X: temp > 0 ? width + temp : -width - temp,
+        Y: Math.random() * (height / 2 + height / 2) - height / 2
+      });
+    }
+    this.mirrorShatterDuration = [];
+    for (let i = 1; i <= 32; i++) {
+      this.mirrorShatterDuration.push({
+        X: Math.random() * (700 - 300) + 300,
+        Y: Math.random() * (700 - 300) + 300
+      });
+    }
   }
   componentDidMount() {
     _upDownRepeatAnimation(this.state.instructionY);
@@ -56,14 +50,14 @@ export default class Welcome extends React.Component {
     instrutction: "Tap on the <Geek/> logo",
     welcomeOpacity: new Animated.Value(0),
     geekOpacity: new Animated.Value(0),
-    logoOpacity: new Animated.Value(0),
     textLetterRotation: new Animated.Value(0),
     disabled: false,
     instructionOpacity: new Animated.Value(0),
     instructionY: new Animated.Value(0),
     mainViewX: new Animated.Value(0),
     mainViewY: new Animated.Value(0),
-    continueloopAnimation: true
+    continueloopAnimation: true,
+    image: require("../../../Assets/Geek.jpg")
   };
 
   _animHandler() {
@@ -90,14 +84,39 @@ export default class Welcome extends React.Component {
           this.mirrorShatterDestination,
           this.mirrorShatterDuration,
           () => {
+            let x = 0;
             this.setState({
               count: this.state.count + 1,
-              instrutction: "Now thats how we roll !!!!!"
+              instrutction: "What the hell mann !! You destroyed everything"
             });
+
+            setTimeout(() => {
+              _smallAnimation(this.state.instructionOpacity, 0, 200).start();
+              this.setState({
+                instrutction: "oh wait! I feel something",
+                image: require("../../../Assets/logo-icon-lg.png")
+              });
+              _smallAnimation(this.state.instructionOpacity, 1, 200).start();
+              let newMirrorShatterDestination = [];
+              for (let i = 0; i < this.mirrorShatterDestination.length; i++) {
+                newMirrorShatterDestination.push({ X: 0, Y: 0 });
+              }
+              _mirrorShatterAnimation(
+                this.position,
+                newMirrorShatterDestination,
+                this.mirrorShatterDuration,
+                () => {
+                  this.setState({ instrutction: "Thats how its done!!!" });
+                },
+                this.state.mainViewX,
+                this.state.mainViewY,
+                this.state.instructionOpacity,
+                this.state.textLetterRotation
+              );
+            }, 2000);
           },
           this.state.mainViewX,
           this.state.mainViewY,
-          this.state.logoOpacity,
           this.state.instructionOpacity,
           this.state.textLetterRotation
         );
@@ -113,10 +132,11 @@ export default class Welcome extends React.Component {
       inputRange: [0, 360],
       outputRange: ["0deg", "-360deg"]
     });
+
     return (
       <Container
         style={{
-          backgroundColor: "rgba(26, 26, 26, 1)",
+          backgroundColor: "rgba(26,26,26,1)",
           padding: "5%",
           paddingTop: "50%"
         }}
@@ -139,22 +159,11 @@ export default class Welcome extends React.Component {
               fontWeight: "bold",
               color: "#fff",
               opacity: this.state.welcomeOpacity,
-              marginBottom: "15%"
+              marginBottom: "20%"
             }}
           >
             Welcome
           </Animated.Text>
-          <Animated.Image
-            source={require("../../../Assets/logo-icon-lg.png")}
-            style={{
-              width: 100,
-              height: 100,
-              position: "absolute",
-              opacity: this.state.logoOpacity
-            }}
-            resizeMethod="auto"
-            resizeMode="contain"
-          />
           <Animated.View
             style={{
               flexDirection: "row",
@@ -165,8 +174,7 @@ export default class Welcome extends React.Component {
               opacity: this.state.geekOpacity
             }}
           >
-            <AnimatedTextGenerator
-              text="<Geek/>"
+            <FragmentedImage
               disabled={this.state.disabled}
               position={this.position}
               rotation={[
@@ -176,17 +184,14 @@ export default class Welcome extends React.Component {
                 letterAntiRotation,
                 letterRotation,
                 letterAntiRotation,
-                letterRotation
+                letterRotation,
+                letterAntiRotation
               ]}
-              extraStyle={{
-                fontSize: 42,
-                color: "orange",
-                textShadowColor: "orange",
-                textShadowOffset: { width: 1, height: 1 },
-                textShadowRadius: 15,
-                paddingTop: 50,
-                paddingBottom: 50
-              }}
+              noOfHorizontalFragments={8}
+              noOfVerticalFragments={4}
+              height={200}
+              width={200}
+              source={this.state.image}
               onPress={this._animHandler.bind(this)}
             />
           </Animated.View>
@@ -197,7 +202,7 @@ export default class Welcome extends React.Component {
             opacity: this.state.instructionOpacity,
             transform: [{ translateY: this.state.instructionY }],
             alignSelf: "center",
-            marginTop: "5%"
+            marginTop: "20%"
           }}
         >
           {this.state.instrutction}
