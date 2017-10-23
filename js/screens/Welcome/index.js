@@ -89,13 +89,14 @@ export default class Welcome extends React.Component {
               count: this.state.count + 1,
               instrutction: "What the hell mann !! You destroyed everything"
             });
-
-            setTimeout(() => {
-              _smallAnimation(this.state.instructionOpacity, 0, 200).start();
+            _smallAnimation(this.state.instructionOpacity, 0, 200).start(() => {
               this.setState({
                 instrutction: "oh wait! I feel something",
                 image: require("../../../Assets/logo-icon-lg.png")
               });
+            });
+
+            setTimeout(() => {
               _smallAnimation(this.state.instructionOpacity, 1, 200).start();
               let newMirrorShatterDestination = [];
               for (let i = 0; i < this.mirrorShatterDestination.length; i++) {
