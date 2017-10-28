@@ -61,13 +61,17 @@ export default function _switchButtonAnimation(
   page2TextStateVal,
   logoHeight,
   logoTranslateY,
-  logoWidth
+  logoWidth,
+  lgDecorColor
 ) {
   if (show2ndPage) {
     Animated.timing(switchColor, {
       toValue: 150,
       duration: 400
     }).start();
+    for (let i = 0; i < lgDecorColor.length; i++) {
+      _smallAnimation(lgDecorColor[i], 150, 700).start();
+    }
     Animated.parallel([
       Animated.timing(logoHeight, {
         toValue: 146,
@@ -93,6 +97,9 @@ export default function _switchButtonAnimation(
       toValue: 0,
       duration: 400
     }).start();
+    for (let i = 0; i < lgDecorColor.length; i++) {
+      _smallAnimation(lgDecorColor[i], 0, 700).start();
+    }
     Animated.parallel([
       Animated.timing(logoHeight, {
         toValue: 215,

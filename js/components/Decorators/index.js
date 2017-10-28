@@ -15,9 +15,7 @@ export default class Decorators extends React.Component {
         <Decorator
           color={
             i < this.props.lgDecorColor.length
-              ? this.props.show2ndPage
-                ? this.props.lgDecorColor[i]
-                : this.props.lgDecorColor[i]
+              ? this.props.lgDecorColor[i]
               : this.props.smDecorColor
           }
           key={i}
@@ -32,7 +30,7 @@ export default class Decorators extends React.Component {
               ? this.props.dimensionsLg
               : this.props.dimensionsSm
           }
-          opacity={this.props.opacityDecor}
+          opacity={Math.random() * (0.6 - 0.3) + 0.3}
           translateY={this.props.decorStateVal[i].Y}
           translateX={this.props.decorStateVal[i].X}
         />

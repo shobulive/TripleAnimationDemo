@@ -23,8 +23,8 @@ let page2SwitchText = "Register";
 export default class Main extends React.Component {
   state = {
     switchColor: new Animated.Value(0),
-    dimensionsSm: new Animated.Value(50),
-    dimensionsLg: new Animated.Value(450),
+    dimensionsSm: new Animated.Value(this.props.dimensionsSmDecor),
+    dimensionsLg: new Animated.Value(this.props.dimensionsLgDecor),
     heightMainView: new Animated.Value(height),
     widthMainView: new Animated.Value(width),
     opacityMainView: new Animated.Value(1),
@@ -34,19 +34,32 @@ export default class Main extends React.Component {
     buttonHeight: new Animated.Value(50),
     logoHeight: new Animated.Value(215),
     logoWidth: new Animated.Value(200),
-    logoTranslateY: new Animated.Value(100),
-    submitButtonWidth: new Animated.Value(width - 40),
-    submitButtonHeight: new Animated.Value(45),
-    submitButtonOpacity: new Animated.Value(1),
-    submitPage1Color: new Animated.Value(0),
-    submitPage2Color: new Animated.Value(0)
+    logoTranslateY: new Animated.Value(100)
   };
   constructor(props) {
     super(props);
+    page1SwitchText = this.props.page1SwitchText;
+    page2SwitchText = this.props.page2SwitchText;
+    this.color = this.props.lgDecorColorArray;
     this.props.reduceButtonHeight(this.state.buttonHeight);
-    this.lgDecorColor = ["#7d18f2", "#ff0000"];
+    this.lgDecorColor = [];
+    for (let i = 0; i < this.color.length; i++) {
+      let nm = "ldDecor" + i + "color";
+      this.state[nm] = new Animated.Value(0);
+      this.lgDecorColor.push(this.state[nm]);
+    }
+    this.lgDecorColorOutput = [];
+    for (let i = 0; i < this.color.length; i++) {
+      let nm = "ldDecor" + i + "color";
+      this.lgDecorColorOutput.push(
+        this.state[nm].interpolate({
+          inputRange: [0, 150],
+          outputRange: [this.color[i][0], this.color[i][1]]
+        })
+      );
+    }
     this.decor = [];
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < this.props.noOfDecors; i++) {
       let x = "decor" + i + "X";
       let y = "decor" + i + "Y";
       if (i == 0) {
@@ -120,7 +133,8 @@ export default class Main extends React.Component {
       this.page2TextStateVal,
       this.state.logoHeight,
       this.state.logoTranslateY,
-      this.state.logoWidth
+      this.state.logoWidth,
+      this.lgDecorColor
     );
   }
   componentDidMount() {
@@ -151,8 +165,8 @@ export default class Main extends React.Component {
           dimensionsSm={this.state.dimensionsSm}
           opacityDecor={this.state.opacityDecor}
           decorStateVal={this.decor}
-          lgDecorColor={this.lgDecorColor}
-          smDecorColor="#ccc"
+          lgDecorColor={this.lgDecorColorOutput}
+          smDecorColor={this.props.smDecorColor}
         />
         <Content>
           <View

@@ -44,6 +44,16 @@ export default class Main extends React.Component {
         reduceButtonHeight={buttonHeight => {
           buttonHeightHere = buttonHeight;
         }}
+        lgDecorColorArray={[
+          ["rgba(255,165,0,1)", "rgba(50,205,50,1)"],
+          ["#ff0000", "#7d18f2"]
+        ]}
+        smDecorColor="#ccc"
+        dimensionsSmDecor={50}
+        dimensionsLgDecor={450}
+        noOfDecors={6}
+        page1SwitchText="Login"
+        page2SwitchText="Register"
         page1={
           <LoginForm
             usernameChange={event => console.log(event.nativeEvent.text)}

@@ -13,8 +13,11 @@ let { width, height } = Dimensions.get("window");
 export default class Welcome extends React.Component {
   constructor(props) {
     super(props);
+    this.noOfHorizontalFragments = 8;
+    this.noOfVerticalFragments = 4;
+    this.total = this.noOfHorizontalFragments * this.noOfVerticalFragments;
     this.position = [];
-    for (let i = 1; i <= 32; i++) {
+    for (let i = 1; i <= this.total; i++) {
       let x = "imageFragment" + i + "X";
       let y = "imageFragment" + i + "Y";
       this.state[x] = new Animated.Value(0);
@@ -22,7 +25,7 @@ export default class Welcome extends React.Component {
       this.position.push({ X: this.state[x], Y: this.state[y] });
     }
     this.mirrorShatterDestination = [];
-    for (let i = 1; i <= 32; i++) {
+    for (let i = 1; i <= this.total; i++) {
       let temp = Math.random() * (1 + 1) - 1;
       this.mirrorShatterDestination.push({
         X: temp > 0 ? width + temp : -width - temp,
@@ -30,11 +33,24 @@ export default class Welcome extends React.Component {
       });
     }
     this.mirrorShatterDuration = [];
-    for (let i = 1; i <= 32; i++) {
+    for (let i = 1; i <= this.total; i++) {
       this.mirrorShatterDuration.push({
         X: Math.random() * (700 - 300) + 300,
         Y: Math.random() * (700 - 300) + 300
       });
+    }
+    const letterRotation = this.state.textLetterRotation.interpolate({
+      inputRange: [0, 360],
+      outputRange: ["0deg", "360deg"]
+    });
+    const letterAntiRotation = this.state.textLetterRotation.interpolate({
+      inputRange: [0, 360],
+      outputRange: ["0deg", "-360deg"]
+    });
+    this.rotation = [];
+    for (let i = 0; i < this.noOfHorizontalFragments / 2; i++) {
+      this.rotation.push(letterRotation);
+      this.rotation.push(letterAntiRotation);
     }
   }
   componentDidMount() {
@@ -125,15 +141,6 @@ export default class Welcome extends React.Component {
     }
   }
   render() {
-    const letterRotation = this.state.textLetterRotation.interpolate({
-      inputRange: [0, 360],
-      outputRange: ["0deg", "360deg"]
-    });
-    const letterAntiRotation = this.state.textLetterRotation.interpolate({
-      inputRange: [0, 360],
-      outputRange: ["0deg", "-360deg"]
-    });
-
     return (
       <Container
         style={{
@@ -178,18 +185,9 @@ export default class Welcome extends React.Component {
             <FragmentedImage
               disabled={this.state.disabled}
               position={this.position}
-              rotation={[
-                letterRotation,
-                letterAntiRotation,
-                letterRotation,
-                letterAntiRotation,
-                letterRotation,
-                letterAntiRotation,
-                letterRotation,
-                letterAntiRotation
-              ]}
-              noOfHorizontalFragments={8}
-              noOfVerticalFragments={4}
+              rotation={this.rotation}
+              noOfHorizontalFragments={this.noOfHorizontalFragments}
+              noOfVerticalFragments={this.noOfVerticalFragments}
               height={200}
               width={200}
               source={this.state.image}

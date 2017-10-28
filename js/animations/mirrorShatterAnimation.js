@@ -23,9 +23,10 @@ export default function _mirrorShatterAnimation(
       _smallAnimation(position[i].X, destination[i].X, duration[i].X)
     );
   }
-  smallAnimationCollection.push(_screenShakeAnimation(mainViewX, mainViewY));
-  Animated.parallel(smallAnimationCollection).start(() => {
-    callBackFunction();
-    _smallAnimation(instructionOpacity, 1, 500).start();
+  _screenShakeAnimation(mainViewX, mainViewY).start(() => {
+    Animated.parallel(smallAnimationCollection).start(() => {
+      callBackFunction();
+      _smallAnimation(instructionOpacity, 1, 500).start();
+    });
   });
 }
