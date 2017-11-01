@@ -4,17 +4,9 @@ import { NavigationActions } from "react-navigation";
 import { Animated, Dimensions } from "react-native";
 import LoginForm from "../../components/LoginForm";
 import RegistrationForm from "../../components/RegistrationForm";
-import _submitAnimation from "../../animations/submitAnimation";
 let { width } = Dimensions.get("window");
 let buttonHeightHere;
 export default class Main extends React.Component {
-  state = {
-    submitButtonWidth: new Animated.Value(width - 40),
-    submitButtonHeight: new Animated.Value(45),
-    submitButtonOpacity: new Animated.Value(1),
-    submitPage1Color: new Animated.Value(0),
-    submitPage2Color: new Animated.Value(0)
-  };
   _buttonPress() {
     this.props.navigation.dispatch(
       NavigationActions.reset({
@@ -28,26 +20,18 @@ export default class Main extends React.Component {
     );
   }
   render() {
-    const page1SubmitColor = this.state.submitPage1Color.interpolate({
-      inputRange: [0, 150],
-      outputRange: ["rgba(255,165,0,1)", "rgba(26, 26, 26, 1)"]
-    });
-    const page2SubmitColor = this.state.submitPage2Color.interpolate({
-      inputRange: [0, 150],
-      outputRange: ["rgba(50,205,50,1)", "rgba(26, 26, 26, 1)"]
-    });
     return (
       <PageSwitchBackGroundAnims
+        containerStyle={{ backgroundColor: "#000" }}
         backgroundImage={require("../../../Assets/background-image.png")}
         logo={require("../../../Assets/logo.png")}
         logoStyle={{ marginBottom: 30 }}
-        reduceButtonHeight={buttonHeight => {
-          buttonHeightHere = buttonHeight;
-        }}
         lgDecorColorArray={[
           ["rgba(255,165,0,1)", "rgba(50,205,50,1)"],
           ["#ff0000", "#7d18f2"]
         ]}
+        switchButtonColor1="rgba(255,0,0,0.5)"
+        switchButtonColor2="rgba(125, 24, 242, 0.5)"
         smDecorColor="#ccc"
         dimensionsSmDecor={50}
         dimensionsLgDecor={450}
@@ -58,18 +42,8 @@ export default class Main extends React.Component {
           <LoginForm
             usernameChange={event => console.log(event.nativeEvent.text)}
             passwordChange={event => console.log(event.nativeEvent.text)}
-            submitHandler={() => {
-              _submitAnimation(
-                this.state.submitButtonWidth,
-                this.state.submitButtonHeight,
-                this.state.submitPage1Color,
-                buttonHeightHere,
-                this._buttonPress.bind(this)
-              );
-            }}
-            color={page1SubmitColor}
-            buttonWidth={this.state.submitButtonWidth}
-            buttonHeight={this.state.submitButtonHeight}
+            onPressSubmit={this._buttonPress.bind(this)}
+            color="rgba(255,165,0,1)"
           />
         }
         page2={
@@ -78,18 +52,8 @@ export default class Main extends React.Component {
             passwordChange={event => console.log(event.nativeEvent.text)}
             confirmPasswordChange={event => console.log(event.nativeEvent.text)}
             emailChange={event => console.log(event.nativeEvent.text)}
-            color={page2SubmitColor}
-            submitHandler={() => {
-              _submitAnimation(
-                this.state.submitButtonWidth,
-                this.state.submitButtonHeight,
-                this.state.submitPage2Color,
-                buttonHeightHere,
-                this._buttonPress.bind(this)
-              );
-            }}
-            buttonWidth={this.state.submitButtonWidth}
-            buttonHeight={this.state.submitButtonHeight}
+            onPress={this._buttonPress.bind(this)}
+            color="rgba(50,205,50,1)"
           />
         }
       />

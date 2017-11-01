@@ -2,8 +2,12 @@ import React from "react";
 import { Animated, Dimensions } from "react-native";
 import { View, Form, Item, Input, Button, Text, Spinner } from "native-base";
 let { width } = Dimensions.get("window");
+// import _submitAnimation from "../../animations/submitAnimation";
+import SubmitButtonWithAnimation from "../SubmitButtonWithAnimation";
 export default class LoginForm extends React.Component {
-  state = { submitted: false };
+  state = {
+    submitted: false
+  };
   render() {
     return (
       <View
@@ -77,32 +81,13 @@ export default class LoginForm extends React.Component {
             />
           </Item>
         </Form>
-        <Animated.View
-          style={{
-            backgroundColor: this.props.color,
-            borderRadius: 50,
-            width: this.props.buttonWidth,
-            height: this.props.buttonHeight,
-            alignItems: "center",
-            justifyContent: "center",
-            alignContent: "center"
-          }}
-        >
-          <Button
-            full
-            transparent
-            onPress={() => {
-              this.setState({ submitted: true });
-              this.props.submitHandler();
-            }}
-          >
-            {this.state.submitted ? (
-              <Spinner color="#fff" />
-            ) : (
-              <Text style={{ color: "white" }}>Register</Text>
-            )}
-          </Button>
-        </Animated.View>
+        <SubmitButtonWithAnimation
+          width={width - 40}
+          height={45}
+          color={this.props.color}
+          onPress={this.props.onPressSubmit}
+          text="Register"
+        />
       </View>
     );
   }

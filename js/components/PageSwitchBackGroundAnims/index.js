@@ -23,8 +23,8 @@ let page2SwitchText = "Register";
 export default class Main extends React.Component {
   state = {
     switchColor: new Animated.Value(0),
-    dimensionsSm: new Animated.Value(this.props.dimensionsSmDecor),
-    dimensionsLg: new Animated.Value(this.props.dimensionsLgDecor),
+    dimensionsSm: new Animated.Value(this.props.dimensionsSmDecor || 45),
+    dimensionsLg: new Animated.Value(this.props.dimensionsLgDecor || 450),
     heightMainView: new Animated.Value(height),
     widthMainView: new Animated.Value(width),
     opacityMainView: new Animated.Value(1),
@@ -38,10 +38,12 @@ export default class Main extends React.Component {
   };
   constructor(props) {
     super(props);
-    page1SwitchText = this.props.page1SwitchText;
-    page2SwitchText = this.props.page2SwitchText;
-    this.color = this.props.lgDecorColorArray;
-    this.props.reduceButtonHeight(this.state.buttonHeight);
+    page1SwitchText = this.props.page1SwitchText || "Page1";
+    page2SwitchText = this.props.page2SwitchText || "Page2";
+    this.color = this.props.lgDecorColorArray || [
+      ["rgba(255,165,0,1)", "rgba(50,205,50,1)"],
+      ["#ff0000", "#7d18f2"]
+    ];
     this.lgDecorColor = [];
     for (let i = 0; i < this.color.length; i++) {
       let nm = "ldDecor" + i + "color";
@@ -59,7 +61,7 @@ export default class Main extends React.Component {
       );
     }
     this.decor = [];
-    for (let i = 0; i < this.props.noOfDecors; i++) {
+    for (let i = 0; i < (this.props.noOfDecors || 6); i++) {
       let x = "decor" + i + "X";
       let y = "decor" + i + "Y";
       if (i == 0) {
@@ -143,14 +145,20 @@ export default class Main extends React.Component {
   render() {
     const buttonColor = this.state.switchColor.interpolate({
       inputRange: [0, 150],
-      outputRange: ["rgba(255,0,0,0.5)", "rgba(125, 24, 242, 0.5)"]
+      outputRange: [
+        this.props.switchButtonColor1 || "rgba(255,0,0,0.5)",
+        this.props.switchButtonColor2 || "rgba(125, 24, 242, 0.5)"
+      ]
     });
 
     return (
       <Container
-        style={{
-          alignItems: "center"
-        }}
+        style={[
+          this.props.containerStyle,
+          {
+            alignItems: "center"
+          }
+        ]}
       >
         <StatusBar barStyle="light-content" />
         <ImageBackground
@@ -166,7 +174,7 @@ export default class Main extends React.Component {
           opacityDecor={this.state.opacityDecor}
           decorStateVal={this.decor}
           lgDecorColor={this.lgDecorColorOutput}
-          smDecorColor={this.props.smDecorColor}
+          smDecorColor={this.props.smDecorColor || "#ccc"}
         />
         <Content>
           <View
