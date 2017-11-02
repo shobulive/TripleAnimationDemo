@@ -7,9 +7,6 @@ export default function _mirrorShatterAnimation(
   destination,
   duration,
   callBackFunction,
-  mainViewX,
-  mainViewY,
-  instructionOpacity,
   textLetterRotation
 ) {
   Vibration.vibrate(1000);
@@ -23,10 +20,7 @@ export default function _mirrorShatterAnimation(
       _smallAnimation(position[i].X, destination[i].X, duration[i].X)
     );
   }
-  _screenShakeAnimation(mainViewX, mainViewY).start(() => {
-    Animated.parallel(smallAnimationCollection).start(() => {
-      callBackFunction();
-      _smallAnimation(instructionOpacity, 1, 500).start();
-    });
+  Animated.parallel(smallAnimationCollection).start(() => {
+    callBackFunction();
   });
 }

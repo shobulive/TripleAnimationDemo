@@ -1,7 +1,7 @@
 import React from "react";
-import Main from "./js/screens/Main";
+import Main from "./screens/Main";
 import { StackNavigator } from "react-navigation";
-import Welcome from "./js/screens/Welcome";
+import Welcome from "./screens/Welcome";
 const NavigationDetails = StackNavigator(
   {
     Main: { screen: Main },

@@ -23,8 +23,8 @@ export default class Main extends React.Component {
     return (
       <PageSwitchBackGroundAnims
         containerStyle={{ backgroundColor: "#000" }}
-        backgroundImage={require("../../../Assets/background-image.png")}
-        logo={require("../../../Assets/logo.png")}
+        backgroundImage={require("../../Assets/background-image.png")}
+        logo={require("../../Assets/logo.png")}
         logoStyle={{ marginBottom: 30 }}
         lgDecorColorArray={[
           ["rgba(255,165,0,1)", "rgba(50,205,50,1)"],
