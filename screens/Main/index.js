@@ -1,5 +1,5 @@
 import React from "react";
-import PageSwitchBackGroundAnims from "../../components/PageSwitchBackGroundAnims";
+import PageSwitchBackGroundAnims from "../../Animations3T/main/PageSwitchBackGroundAnims";
 import { NavigationActions } from "react-navigation";
 import { Animated, Dimensions } from "react-native";
 import LoginForm from "../../components/LoginForm";
@@ -52,7 +52,7 @@ export default class Main extends React.Component {
             passwordChange={event => console.log(event.nativeEvent.text)}
             confirmPasswordChange={event => console.log(event.nativeEvent.text)}
             emailChange={event => console.log(event.nativeEvent.text)}
-            onPress={this._buttonPress.bind(this)}
+            onPressSubmit={this._buttonPress.bind(this)}
             color="rgba(50,205,50,1)"
           />
         }

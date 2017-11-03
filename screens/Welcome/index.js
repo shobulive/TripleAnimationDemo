@@ -1,12 +1,10 @@
 import React from "react";
 import { StatusBar, Text, Animated, Dimensions } from "react-native";
 import { Container, View } from "native-base";
-import _smallAnimation from "../../animations/smallAnimation";
-import _mirrorBreakAnimation from "../../animations/mirrorBreakAnimation";
-import _mirrorShatterAnimation from "../../animations/mirrorShatterAnimation";
-import _dramaticAppearanceAnimation from "../../animations/dramaticApperanceAnimation";
-import _upDownRepeatAnimation from "../../animations/upDownRepeatAnimations";
-import ShatteringImage from "../../components/ShattereringImage";
+import _smallAnimation from "../../anims/smallAnimation";
+import _dramaticAppearanceAnimation from "../../anims/dramaticApperanceAnimation";
+import _upDownRepeatAnimation from "../../anims/upDownRepeatAnimations";
+import ShatteringImage from "../../Animations3T/main/ShattereringImage";
 let { width, height } = Dimensions.get("window");
 export default class Welcome extends React.Component {
   constructor(props) {
@@ -65,8 +63,8 @@ export default class Welcome extends React.Component {
             }}
           >
             <ShatteringImage
-              noOfHorizontalFragments={20}
-              noOfVerticalFragments={20}
+              noOfHorizontalFragments={10}
+              noOfVerticalFragments={10}
               image1={require("../../Assets/Geek.jpg")}
               case1Callback={() => {
                 this.setState({

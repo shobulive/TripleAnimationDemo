@@ -1,7 +1,7 @@
 import React from "react";
 import { Animated, Dimensions } from "react-native";
 import { View, Form, Item, Input, Button, Text, Spinner } from "native-base";
-import SubmitButtonWithAnimation from "../SubmitButtonWithAnimation";
+import SubmitButtonWithAnimation from "../../Animations3T/main/SubmitButtonWithAnimation";
 let { width } = Dimensions.get("window");
 export default class LoginForm extends React.Component {
   render() {

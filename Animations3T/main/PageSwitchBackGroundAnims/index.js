@@ -9,18 +9,13 @@ import {
   Image
 } from "react-native";
 import { Button, Container, Content } from "native-base";
-import Decorators from "../Decorators";
-import LoginForm from "../LoginForm";
-import RegistrationForm from "../RegistrationForm";
+import Decorators from "../../components/Decorators";
 import _defaultAnimations from "../../animations/defaultRunAnimation";
-import _smallAnimation from "../../animations/smallAnimation";
-import PageSwitchButton from "../PageSwitchButton";
+import PageSwitchButton from "../../components/PageSwitchButton";
 import _switchButtonAnimation from "../../animations/switchButtonAnimation";
-import _submitAnimation from "../../animations/submitAnimation";
 let { height, width } = Dimensions.get("window");
-let page1SwitchText = "Login";
-let page2SwitchText = "Register";
-export default class Main extends React.Component {
+let page1SwitchText, page2SwitchText;
+export default class PageSwitchBackGroundAnims extends React.Component {
   state = {
     switchColor: new Animated.Value(0),
     dimensionsSm: new Animated.Value(this.props.dimensionsSmDecor || 45),

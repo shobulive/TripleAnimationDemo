@@ -2,8 +2,7 @@ import React from "react";
 import { Animated, Dimensions } from "react-native";
 import { View, Form, Item, Input, Button, Text, Spinner } from "native-base";
 let { width } = Dimensions.get("window");
-// import _submitAnimation from "../../animations/submitAnimation";
-import SubmitButtonWithAnimation from "../SubmitButtonWithAnimation";
+import SubmitButtonWithAnimation from "../../Animations3T/main/SubmitButtonWithAnimation";
 export default class LoginForm extends React.Component {
   state = {
     submitted: false
