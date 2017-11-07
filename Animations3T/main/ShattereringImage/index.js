@@ -7,8 +7,8 @@ let { width, height } = Dimensions.get("window");
 export default class Welcome extends React.Component {
   constructor(props) {
     super(props);
-    this.noOfHorizontalFragments = this.props.noOfHorizontalFragments;
-    this.noOfVerticalFragments = this.props.noOfVerticalFragments;
+    this.noOfHorizontalFragments = this.props.noOfHorizontalFragments || 8;
+    this.noOfVerticalFragments = this.props.noOfVerticalFragments || 4;
     this.total = this.noOfHorizontalFragments * this.noOfVerticalFragments;
     this.position = [];
     for (let i = 1; i <= this.total; i++) {

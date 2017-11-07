@@ -140,7 +140,7 @@ Run the following command
           />
         }
       />
-'''
+```
 
 # #2 SubmitButton Animation
 
@@ -148,11 +148,46 @@ Run the following command
 
 **PROPS**
 
+| Name    | Type          | DefaultValue        | Notes              |
+|---------|---------------|---------------------|--------------------|
+| width   | Integer       | ScreenWidth-40      | Width of button    |
+| height  | Integer       | 45                  | Height of button   |
+| color   | color(string) | "rgba(243,9,152,1)" | Color of button    |
+| onPress | func          | ()=>{}              | Button press event |
+| text    | string        | "Button"            | Button text        |
 
+```javascript
+
+ <SubmitButtonWithAnimation
+          width={width - 40}
+          height={45}
+          color={this.props.color}
+          onPress={this.props.onPressSubmit}
+          text="Login"
+        />
+```
+        
 # #3 Shattering Image Animation
 
 >import ShatteringImage from "./Animations3T/main/ShattereringImage";
 
+| Name                    | Type    | DefaultValue | Notes                                                   |
+|-------------------------|---------|--------------|---------------------------------------------------------|
+| noOfHorizontalFragments | Integer | 8            | No. of fragments in which the image splits horizontally |
+| noOfVerticalFragments   | Integer | 4            | No. of fragments in which the image splits vertically   |
+| image1                  | uri     | null         | REQUIRED & initial image displayed                      |
+| image2                  | uri     | null         | REQUIRED & image displayed after animation complete     |
+
+```javascript
+ <ShatteringImage
+              noOfHorizontalFragments={10}
+              noOfVerticalFragments={10}
+              image1={require("../../Assets/Geek.jpg")}
+             
+              image2={require("../../Assets/logo-icon-lg.png")}
+            />
+```
+> note: The Animation will trigger on clicking the image 
 
 ## Credits
 

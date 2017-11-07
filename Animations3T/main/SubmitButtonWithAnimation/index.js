@@ -1,17 +1,21 @@
 import React from "react";
-import { Animated } from "react-native";
+import { Animated, Dimensions } from "react-native";
 import { View, Button, Text, Spinner } from "native-base";
 import _submitAnimation from "../../animations/submitAnimation";
+let { width } = Dimensions.get("screen");
 export default class SubmitButtonWithAnimation extends React.Component {
   state = {
-    submitButtonWidth: new Animated.Value(this.props.width),
-    submitButtonHeight: new Animated.Value(this.props.height),
+    submitButtonWidth: new Animated.Value(this.props.width || width - 40),
+    submitButtonHeight: new Animated.Value(this.props.height || 45),
     submitColor: new Animated.Value(0)
   };
   render() {
     const submitButtonColor = this.state.submitColor.interpolate({
       inputRange: [0, 150],
-      outputRange: [this.props.color, "rgba(26, 26, 26, 1)"]
+      outputRange: [
+        this.props.color || "rgba(243,9,152,1)",
+        "rgba(26, 26, 26, 1)"
+      ]
     });
     return (
       <Animated.View
@@ -34,14 +38,16 @@ export default class SubmitButtonWithAnimation extends React.Component {
               this.state.submitButtonWidth,
               this.state.submitButtonHeight,
               this.state.submitColor,
-              this.props.onPress
+              this.props.onPress || (() => {})
             );
           }}
         >
           {this.state.submitted ? (
             <Spinner color="#fff" />
           ) : (
-            <Text style={{ color: "white" }}>{this.props.text}</Text>
+            <Text style={{ color: "white" }}>
+              {this.props.text || "Button"}
+            </Text>
           )}
         </Button>
       </Animated.View>
