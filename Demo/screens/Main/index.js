@@ -1,5 +1,5 @@
 import React from "react";
-import PageSwitchBackGroundAnims from "../../Animations3T/main/PageSwitchBackGroundAnims";
+import PageSwitchBackGroundAnims from "../../../Animations3T/main/PageSwitchBackGroundAnims";
 import { NavigationActions } from "react-navigation";
 import { Animated, Dimensions } from "react-native";
 import LoginForm from "../../components/LoginForm";

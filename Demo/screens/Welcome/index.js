@@ -4,7 +4,7 @@ import { Container, View } from "native-base";
 import _smallAnimation from "../../anims/smallAnimation";
 import _dramaticAppearanceAnimation from "../../anims/dramaticApperanceAnimation";
 import _upDownRepeatAnimation from "../../anims/upDownRepeatAnimations";
-import ShatteringImage from "../../Animations3T/main/ShattereringImage";
+import ShatteringImage from "../../../Animations3T/main/ShattereringImage";
 let { width, height } = Dimensions.get("window");
 export default class Welcome extends React.Component {
   constructor(props) {
