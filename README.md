@@ -5,7 +5,7 @@ It is bootstrapped with [Create React Native App](https://github.com/react-commu
 
 ## Demo
 
-|### #1 Page Switch Animation                |### #2 SubmitButton Animation               |### #3 Shattering Image Animation             |
+|       Page Switch Animation                |       SubmitButton Animation               |       Shattering Image Animation             |
 |--------------------------------------------|--------------------------------------------|----------------------------------------------|
 |![Preview](screenshot/PageSwitchAnim.gif)   |![Preview](screenshot/SubmitButtonAnim.gif) |![Preview](screenshot/ShatteringImageAnim.gif)|
 
