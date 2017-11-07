@@ -83,23 +83,23 @@ Run the following command
 >import PageSwitchBackGroundAnims from "./Animations3T/main/PageSwitchBackGroundAnims";
 
 **PROPS**
-| Name              | Type              |Default                                                           |Note         |
-| ------------------|:-----------------:| ----------------------------------------------------------------:|------------:|
-|containerStyle     | style object      | null                                                             |none         |
-|backgroundImage    | uri               | null                                                             |none         |
-|logo               | uri               | null                                                             |none         |
-|logoStyle          | style object      | null                                                             |none         |
-|lgDecorColorArray  | Array<Array(2)>   |[["rgba(255,165,0,1)", "rgba(50,205,50,1)"],"#ff0000", "#7d18f2"]]|refer note   |
-|switchButtonColor1 | color(string)     |"rgba(255,0,0,0.5)"                                               |none         |
-|switchButtonColor2 | color(string)     |"rgba(125, 24, 242, 0.5)"                                         |none         |
-|smDecorColor       | color(string)     |"rgba(200, 200, 200, 0.5)"                                        |none         |
-|dimensionsSmDecor  |Integer            |50                                                                |none         |
-|dimensionsLgDecor  |Integer            |450                                                               |none         |
-|noOfDecors         |Integer            |6                                                                 |none         |
-|page1SwitchText    |string             |"Page1"                                                           |none         |
-|page2SwitchText    |string             |"Page2"                                                           |none         |
-|page1              |React.Component    |null                                                              |Content Page1|
-|page2              |React.Component    |null                                                              |Content Page1|
+| Name               | Type            | Default                                                            | Note                             |
+|--------------------|-----------------|--------------------------------------------------------------------|----------------------------------|
+| containerStyle     | style object    | null                                                               | none                             |
+| backgroundImage    | uri             | null                                                               | none                             |
+| logo               | uri             | null                                                               | none                             |
+| logoStyle          | style object    | null                                                               | none                             |
+| lgDecorColorArray  | Array<Array(2)> | [["rgba(255,165,0,1)", "rgba(50,205,50,1)"],"#ff0000", "#7d18f2"]] | refer note                       |
+| switchButtonColor1 | color(string)   | "rgba(255,0,0,0.5)"                                                | none                             |
+| switchButtonColor2 | color(string)   | "rgba(125, 24, 242, 0.5)"                                          | none                             |
+| smDecorColor       | color(string)   | "rgba(200, 200, 200, 0.5)"                                         | none                             |
+| dimensionsSmDecor  | Integer         | 50                                                                 | none                             |
+| dimensionsLgDecor  | Integer         | 450                                                                | none                             |
+| noOfDecors         | Integer         | 6                                                                  | none                             |
+| page1SwitchText    | string          | "page2"                                                            | Text on switch button for page 2 |
+| page2SwitchText    | string          | "page1"                                                            | Text on switch button for page 1 |
+| page1              | React Component | null                                                               | Content Page1                    |
+| page2              | React Component | null                                                               | Content Page2                    |
 
 > note: Array of size 2 where in each 0th index is the color of corresponding Large Decor on 1st page and 1th index is the color of corresponding Large Decor on 2st page
 
