@@ -5,15 +5,15 @@ It is bootstrapped with [Create React Native App](https://github.com/react-commu
 
 ## Demo
 
-# #1 Page Switch Animation
+### #1 Page Switch Animation
 
 ![Preview](screenshot/PageSwitchAnim.gif)
 
-# #2 SubmitButton Animation
+### #2 SubmitButton Animation
 
 ![Preview](screenshot/SubmitButtonAnim.gif)
 
-# #3 Shattering Image Animation
+### #3 Shattering Image Animation
 
 ![Preview](screenshot/ShatteringImageAnim.gif)
 
@@ -78,7 +78,7 @@ Run the following command
 
 **3. How to use**
 
-# #1 Page Switch Animation
+### #1 Page Switch Animation
 
 >import PageSwitchBackGroundAnims from "./Animations3T/main/PageSwitchBackGroundAnims";
 
@@ -142,7 +142,7 @@ Run the following command
       />
 ```
 
-# #2 SubmitButton Animation
+### #2 SubmitButton Animation
 
 >import SubmitButtonWithAnimation from "./Animations3T/main/SubmitButtonWithAnimation";
 
@@ -167,7 +167,7 @@ Run the following command
         />
 ```
         
-# #3 Shattering Image Animation
+### #3 Shattering Image Animation
 
 >import ShatteringImage from "./Animations3T/main/ShattereringImage";
 
