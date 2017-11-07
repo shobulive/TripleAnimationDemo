@@ -83,6 +83,7 @@ Run the following command
 >import PageSwitchBackGroundAnims from "./Animations3T/main/PageSwitchBackGroundAnims";
 
 **PROPS**
+
 | Name               | Type            | Default                                                            | Note                             |
 |--------------------|-----------------|--------------------------------------------------------------------|----------------------------------|
 | containerStyle     | style object    | null                                                               | none                             |
