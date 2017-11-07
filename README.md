@@ -103,10 +103,51 @@ Run the following command
 | page2              | React Component | null                                                               | Content Page2                    |
 
 > note: Array of size 2 where in each 0th index is the color of corresponding Large Decor on 1st page and 1th index is the color of corresponding Large Decor on 2st page
+```javascript
+ <PageSwitchBackGroundAnims
+        containerStyle={{ backgroundColor: "#000" }}
+        backgroundImage={require("../../Assets/background-image.png")}
+        logo={require("../../Assets/logo.png")}
+        logoStyle={{ marginBottom: 30 }}
+        lgDecorColorArray={[
+          ["rgba(255,165,0,1)", "rgba(50,205,50,1)"],
+          ["#ff0000", "#7d18f2"]
+        ]}
+        switchButtonColor1="rgba(255,0,0,0.5)"
+        switchButtonColor2="rgba(125, 24, 242, 0.5)"
+        smDecorColor="#ccc"
+        dimensionsSmDecor={50}
+        dimensionsLgDecor={450}
+        noOfDecors={6}
+        page1SwitchText="Login"
+        page2SwitchText="Register"
+        page1={
+          <LoginForm
+            usernameChange={event => console.log(event.nativeEvent.text)}
+            passwordChange={event => console.log(event.nativeEvent.text)}
+            onPressSubmit={this._buttonPress.bind(this)}
+            color="rgba(255,165,0,1)"
+          />
+        }
+        page2={
+          <RegistrationForm
+            usernameChange={event => console.log(event.nativeEvent.text)}
+            passwordChange={event => console.log(event.nativeEvent.text)}
+            confirmPasswordChange={event => console.log(event.nativeEvent.text)}
+            emailChange={event => console.log(event.nativeEvent.text)}
+            onPressSubmit={this._buttonPress.bind(this)}
+            color="rgba(50,205,50,1)"
+          />
+        }
+      />
+'''
 
 # #2 SubmitButton Animation
 
 >import SubmitButtonWithAnimation from "./Animations3T/main/SubmitButtonWithAnimation";
+
+**PROPS**
+
 
 # #3 Shattering Image Animation
 
