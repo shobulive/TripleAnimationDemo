@@ -169,6 +169,8 @@ Run the following command
 | noOfVerticalFragments   | Integer | 4            | No. of fragments in which the image splits vertically   |
 | image1                  | uri     | null         | REQUIRED & initial image displayed                      |
 | image2                  | uri     | null         | REQUIRED & image displayed after animation complete     |
+| width                   | Integer | 200          |   width of image                                         |
+| height                  | Integer | 200          |   height of image                                        |
 
 ```javascript
  <ShatteringImage

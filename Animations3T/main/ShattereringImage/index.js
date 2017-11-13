@@ -109,8 +109,8 @@ export default class Welcome extends React.Component {
         rotation={this.rotation}
         noOfHorizontalFragments={this.noOfHorizontalFragments}
         noOfVerticalFragments={this.noOfVerticalFragments}
-        height={200}
-        width={200}
+        height={this.props.height || 200}
+        width={this.props.width || 200}
         source={this.state.image}
         onPress={this._animHandler.bind(this)}
       />

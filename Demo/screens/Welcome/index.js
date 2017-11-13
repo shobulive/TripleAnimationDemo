@@ -81,6 +81,8 @@ export default class Welcome extends React.Component {
                   });
                 }, 1000);
               }}
+              width={200}
+              height={200}
               image2={require("../../Assets/logo-icon-lg.png")}
               case2ExtraCallBack={() => {
                 _smallAnimation(this.state.instructionOpacity, 1, 200).start();
