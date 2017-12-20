@@ -1,5 +1,5 @@
 import React from "react";
-import { Animated, View, Text, Dimensions } from "react-native";
+import { Animated, View, Text, Dimensions, Platform } from "react-native";
 import { Button } from "native-base";
 import _smallComponentAnimation from "../../animations/smallAnimation";
 import _suckUpAnimation from "../../animations/suckUpAnimation";
@@ -42,10 +42,10 @@ export default class PageSwitchButton extends React.Component {
             );
           }}
         >
-          <Text
+          <View
             style={{
               color: "white",
-              marginTop: "-4%"
+              marginTop: Platform.OS == "ios" ? -35 : -50
             }}
           >
             {this.props.show2ndPage ? (
@@ -61,7 +61,7 @@ export default class PageSwitchButton extends React.Component {
                 text={this.props.page2Text}
               />
             )}
-          </Text>
+          </View>
         </Button>
       </Animated.View>
     );
