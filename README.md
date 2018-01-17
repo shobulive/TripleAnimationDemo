@@ -5,9 +5,9 @@ It is bootstrapped with [Create React Native App](https://github.com/react-commu
 
 ## Demo
 
-|       Page Switch Animation                |       SubmitButton Animation               |       Shattering Image Animation             |
-|--------------------------------------------|--------------------------------------------|----------------------------------------------|
-|![Preview](screenshot/PageSwitchAnim.gif)   |![Preview](screenshot/SubmitButtonAnim.gif) |![Preview](screenshot/ShatteringImageAnim.gif)|
+| Page Switch Animation                     | SubmitButton Animation                      | Shattering Image Animation                     |
+| ----------------------------------------- | ------------------------------------------- | ---------------------------------------------- |
+| ![Preview](screenshot/PageSwitchAnim.gif) | ![Preview](screenshot/SubmitButtonAnim.gif) | ![Preview](screenshot/ShatteringImageAnim.gif) |
 
 ## Demo on Expo
 
@@ -21,9 +21,9 @@ OR
 
 # Type the Address
 
-Typing 
+Typing
 
->exp://exp.host/@shubham56/awesomeanimation
+> exp://exp.host/@shubham56/awesomeanimation
 
 inside of Expo will also open this experience.
 
@@ -34,50 +34,31 @@ For links to install the Expo app, please visit https://expo.io.
 
 ## Dependencies
 
- * React Native
- * React Navigation
- * NativeBase
- * Expo
+* React Native
+* React Navigation
+* NativeBase
+* Expo
 
-## Getting Started 
+## To use this package
 
-**1. Clone the Repo**
-On the command prompt/shell run the following commands
+**1. Add this to packgage.json of your project**
 
->$ git clone https://github.com/shubham56/TripleAnimationDemo.git
+> $ "triple-animation":"git+https://github.com/shubham56/TripleAnimationDemo.git"
 
->$ cd TripleAnimationDemo
+**2. Run the following command in your project directory**
 
->$ npm install
-
-**2. To start the demo on expo app**
-
-Run the following command
-
->$ npm start
-
-**To run on iOS simulator/device**
-
-Run the following command
-
->$ npm run ios
-
-**To run on android emulator/device**
-
-Run the following command
-
->$ npm run android
+> $ npm install
 
 **3. How to use**
 
 ### #1 Page Switch Animation
 
->import PageSwitchBackGroundAnims from "./Animations3T/main/PageSwitchBackGroundAnims";
+> import { PageSwitchBackground } from "triple-animation";
 
 **PROPS**
 
 | Name               | Type            | Default                                                            | Note                             |
-|--------------------|-----------------|--------------------------------------------------------------------|----------------------------------|
+| ------------------ | --------------- | ------------------------------------------------------------------ | -------------------------------- |
 | containerStyle     | style object    | null                                                               | none                             |
 | backgroundImage    | uri             | null                                                               | none                             |
 | logo               | uri             | null                                                               | none                             |
@@ -95,53 +76,54 @@ Run the following command
 | page2              | React Component | null                                                               | Content Page2                    |
 
 > note: Array of size 2 where in each 0th index is the color of corresponding Large Decor on 1st page and 1th index is the color of corresponding Large Decor on 2st page
+
 ```javascript
- <PageSwitchBackGroundAnims
-        containerStyle={{ backgroundColor: "#000" }}
-        backgroundImage={require("../../Assets/background-image.png")}
-        logo={require("../../Assets/logo.png")}
-        logoStyle={{ marginBottom: 30 }}
-        lgDecorColorArray={[
-          ["rgba(255,165,0,1)", "rgba(50,205,50,1)"],
-          ["#ff0000", "#7d18f2"]
-        ]}
-        switchButtonColor1="rgba(255,0,0,0.5)"
-        switchButtonColor2="rgba(125, 24, 242, 0.5)"
-        smDecorColor="#ccc"
-        dimensionsSmDecor={50}
-        dimensionsLgDecor={450}
-        noOfDecors={6}
-        page1SwitchText="Login"
-        page2SwitchText="Register"
-        page1={
-          <LoginForm
-            usernameChange={event => console.log(event.nativeEvent.text)}
-            passwordChange={event => console.log(event.nativeEvent.text)}
-            onPressSubmit={this._buttonPress.bind(this)}
-            color="rgba(255,165,0,1)"
-          />
-        }
-        page2={
-          <RegistrationForm
-            usernameChange={event => console.log(event.nativeEvent.text)}
-            passwordChange={event => console.log(event.nativeEvent.text)}
-            confirmPasswordChange={event => console.log(event.nativeEvent.text)}
-            emailChange={event => console.log(event.nativeEvent.text)}
-            onPressSubmit={this._buttonPress.bind(this)}
-            color="rgba(50,205,50,1)"
-          />
-        }
-      />
+<PageSwitchBackGroundAnims
+  containerStyle={{ backgroundColor: '#000' }}
+  backgroundImage={require('../../Assets/background-image.png')}
+  logo={require('../../Assets/logo.png')}
+  logoStyle={{ marginBottom: 30 }}
+  lgDecorColorArray={[
+    ['rgba(255,165,0,1)', 'rgba(50,205,50,1)'],
+    ['#ff0000', '#7d18f2']
+  ]}
+  switchButtonColor1="rgba(255,0,0,0.5)"
+  switchButtonColor2="rgba(125, 24, 242, 0.5)"
+  smDecorColor="#ccc"
+  dimensionsSmDecor={50}
+  dimensionsLgDecor={450}
+  noOfDecors={6}
+  page1SwitchText="Login"
+  page2SwitchText="Register"
+  page1={
+    <LoginForm
+      usernameChange={event => console.log(event.nativeEvent.text)}
+      passwordChange={event => console.log(event.nativeEvent.text)}
+      onPressSubmit={this._buttonPress.bind(this)}
+      color="rgba(255,165,0,1)"
+    />
+  }
+  page2={
+    <RegistrationForm
+      usernameChange={event => console.log(event.nativeEvent.text)}
+      passwordChange={event => console.log(event.nativeEvent.text)}
+      confirmPasswordChange={event => console.log(event.nativeEvent.text)}
+      emailChange={event => console.log(event.nativeEvent.text)}
+      onPressSubmit={this._buttonPress.bind(this)}
+      color="rgba(50,205,50,1)"
+    />
+  }
+/>
 ```
 
 ### #2 SubmitButton Animation
 
->import SubmitButtonWithAnimation from "./Animations3T/main/SubmitButtonWithAnimation";
+> import { SubmitButtonWithAnimation } from "triple-animation";
 
 **PROPS**
 
 | Name    | Type          | DefaultValue        | Notes              |
-|---------|---------------|---------------------|--------------------|
+| ------- | ------------- | ------------------- | ------------------ |
 | width   | Integer       | ScreenWidth-40      | Width of button    |
 | height  | Integer       | 45                  | Height of button   |
 | color   | color(string) | "rgba(243,9,152,1)" | Color of button    |
@@ -149,39 +131,38 @@ Run the following command
 | text    | string        | "Button"            | Button text        |
 
 ```javascript
-
- <SubmitButtonWithAnimation
-          width={width - 40}
-          height={45}
-          color={this.props.color}
-          onPress={this.props.onPressSubmit}
-          text="Login"
-        />
+<SubmitButtonWithAnimation
+  width={width - 40}
+  height={45}
+  color={this.props.color}
+  onPress={this.props.onPressSubmit}
+  text="Login"
+/>
 ```
-        
+
 ### #3 Shattering Image Animation
 
->import ShatteringImage from "./Animations3T/main/ShattereringImage";
+> import { ShatteringImage } from "triple-animation";
 
 | Name                    | Type    | DefaultValue | Notes                                                   |
-|-------------------------|---------|--------------|---------------------------------------------------------|
+| ----------------------- | ------- | ------------ | ------------------------------------------------------- |
 | noOfHorizontalFragments | Integer | 8            | No. of fragments in which the image splits horizontally |
 | noOfVerticalFragments   | Integer | 4            | No. of fragments in which the image splits vertically   |
 | image1                  | uri     | null         | REQUIRED & initial image displayed                      |
 | image2                  | uri     | null         | REQUIRED & image displayed after animation complete     |
-| width                   | Integer | 200          |   width of image                                         |
-| height                  | Integer | 200          |   height of image                                        |
+| width                   | Integer | 200          | width of image                                          |
+| height                  | Integer | 200          | height of image                                         |
 
 ```javascript
- <ShatteringImage
-              noOfHorizontalFragments={10}
-              noOfVerticalFragments={10}
-              image1={require("../../Assets/Geek.jpg")}
-             
-              image2={require("../../Assets/logo-icon-lg.png")}
-            />
+<ShatteringImage
+  noOfHorizontalFragments={10}
+  noOfVerticalFragments={10}
+  image1={require('../../Assets/Geek.jpg')}
+  image2={require('../../Assets/logo-icon-lg.png')}
+/>
 ```
-> note: The Animation will trigger on clicking the image 
+
+> note: The Animation will trigger on clicking the image
 
 ## Credits
 
